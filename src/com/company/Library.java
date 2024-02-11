@@ -2,9 +2,12 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.company.Students.borrowBooksList;
+
 
 class Library {
     Books book = new Books();
+    Students student = new Students();
     Scanner scan = new Scanner(System.in);
     ArrayList<Books> booksList = new ArrayList<>();
 
@@ -76,21 +79,41 @@ class Library {
         System.out.println("Enter your Name : ");
         student.studentsName = scan.nextLine();
         System.out.println("Enter your Address : ");
-        student.Address = scan.nextLine();
+        student.address = scan.nextLine();
         System.out.println("Enter your identification number : ");
         student.identificationNumber = scan.nextInt();
         System.out.println("Which book would you like to reserve ?");
         Display();
         System.out.println("Enter your choice : ");
         String bookReserve = new Scanner(System.in).nextLine();
+
+        boolean bookExists = false;
         for (int i = 0; i < booksList.size(); i++) {
             if (booksList.get(i).bookName.equals(bookReserve)) {
-                student.bookReserved = scan.nextLine();
-                Students.borrowBooksList.add(book);
-                System.out.println("book has been successfully reserved!");
-            } else System.out.println("The book you want do not exist");
+                student.bookReserved = booksList.get(i).bookName;
+                borrowBooksList.add(student);
+                System.out.println("Book has been successfully reserved!");
+                bookExists = true;
+                break;
+            }
+        }
+
+        if (!bookExists) {
+            System.out.println("The book you want does not exist");
         }
     }
+
+
+ /*       for (int i = 0; i < booksList.size(); i++) {
+            if (booksList.get(i).bookName.equals(bookReserve)) {
+                student.bookReserved = scan.nextLine();
+                borrowBooksList.add(student);
+                System.out.println("book has been successfully reserved!");
+            } else{
+                System.out.println("The book you want do not exist");
+            }
+      */
+
 
     // Search Book
     void Search() {
@@ -100,8 +123,21 @@ class Library {
             if (booksList.get(i).bookName.equals(findBook)) {
                 System.out.println("The book " + findBook + " is in the library");
             } else {
-                System.out.println("The book you entered do no exist");
+                System.out.println("The book you en  tered do no exist");
             }
+        }
+    }
+
+    void DisplayBorrowerList(){
+        System.out.println("lists of borrowers : ");
+        for (int i = 0 ; i<borrowBooksList.size() ; i++){
+            System.out.println("__________________________");
+            Students student = borrowBooksList.get(i);
+            System.out.println("Student name : " + student.studentsName);
+            System.out.println("Student Address : " + student.address);
+            System.out.println("Student Identification number : " + student.identificationNumber);
+            System.out.println("The Book that he borrowed : " + student.bookReserved);
+            System.out.println("__________________________");
         }
     }
 }

@@ -16,6 +16,7 @@ public class Menu{
                         System.out.println("4-Delete an existent book.");
                         System.out.println("5-Search for a book.");
                         System.out.println("6-Borrow a book.");
+                        System.out.println("7-Display borrowers list.");
 
                         System.out.println("0-Exit.");
 
@@ -23,10 +24,10 @@ public class Menu{
                                 Scanner scan = new Scanner(System.in);
                                 System.out.println("Enter your choice : ");
                                 choice = scan.nextInt();
-                                if (choice < 0 || choice > 7) {
+                                if (choice < 0 || choice > 8) {
                                         System.out.println("Enter a number between 0 and 4 : ");
                                 }
-                        } while (choice < 0 || choice > 7);
+                        } while (choice < 0 || choice > 8);
 
                         switch (choice) {
                                 case 1:
@@ -46,6 +47,9 @@ public class Menu{
                                         break;
                                 case 6:
                                         enaa.Reserve();
+                                        break;
+                                case 7:
+                                        enaa.DisplayBorrowerList();
                                         break;
                         }
                 }while (choice != 0);

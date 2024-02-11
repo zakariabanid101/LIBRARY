@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Students {
     String studentsName;
-    String Address;
+    String address;
     int identificationNumber;
     String bookReserved;
-    static ArrayList<Books> borrowBooksList = new ArrayList<>();
+    static ArrayList<Students> borrowBooksList = new ArrayList<Students>();
 }
