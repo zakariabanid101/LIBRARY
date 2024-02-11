@@ -6,7 +6,6 @@ import java.util.Scanner;
 class Library {
     Books book = new Books();
     Scanner scan = new Scanner(System.in);
-    ArrayList<Students> studentsList = new ArrayList<>();
     ArrayList<Books> booksList = new ArrayList<>();
 
     void addBook() {
@@ -27,6 +26,7 @@ class Library {
 
     void Display() {
         for (Books books : booksList) {
+            System.out.println("__________________________");
             System.out.println("Book's Title : " + books.bookName);
             System.out.println("Book's Author : " + books.bookAuthor);
             System.out.println("Book's ISBN : " + books.ISBN);
@@ -81,15 +81,27 @@ class Library {
         student.identificationNumber = scan.nextInt();
         System.out.println("Which book would you like to reserve ?");
         Display();
-        do {
-            System.out.println("Enter your choice : ");
-            String bookReserve = new Scanner(System.in).nextLine();
-            for (int i = 0; i < booksList.size(); i++) {
-                if (booksList.get(i).bookName.equals(bookReserve)) {
-                    student.bookReserved = scan.nextLine();
-                    System.out.println("book has been successfully reserved!");
-                } else System.out.println("The book you want do not exist");
+        System.out.println("Enter your choice : ");
+        String bookReserve = new Scanner(System.in).nextLine();
+        for (int i = 0; i < booksList.size(); i++) {
+            if (booksList.get(i).bookName.equals(bookReserve)) {
+                student.bookReserved = scan.nextLine();
+                Students.borrowBooksList.add(book);
+                System.out.println("book has been successfully reserved!");
+            } else System.out.println("The book you want do not exist");
+        }
+    }
+
+    // Search Book
+    void Search() {
+        System.out.println("Enter the name of the book you want to find : ");
+        String findBook = new Scanner(System.in).nextLine();
+        for (int i = 0; i < booksList.size(); i++) {
+            if (booksList.get(i).bookName.equals(findBook)) {
+                System.out.println("The book " + findBook + " is in the library");
+            } else {
+                System.out.println("The book you entered do no exist");
             }
-        }while ();
+        }
     }
 }

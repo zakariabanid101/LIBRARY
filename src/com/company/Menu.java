@@ -1,4 +1,5 @@
 package com.company;
+import java.awt.print.Book;
 import java.util.Scanner;
 
 
@@ -13,16 +14,19 @@ public class Menu{
                         System.out.println("2-Display books.");
                         System.out.println("3-Modify an existent book.");
                         System.out.println("4-Delete an existent book.");
+                        System.out.println("5-Search for a book.");
+                        System.out.println("6-Borrow a book.");
+
                         System.out.println("0-Exit.");
 
                         do {
                                 Scanner scan = new Scanner(System.in);
                                 System.out.println("Enter your choice : ");
                                 choice = scan.nextInt();
-                                if (choice < 0 || choice > 6) {
+                                if (choice < 0 || choice > 7) {
                                         System.out.println("Enter a number between 0 and 4 : ");
                                 }
-                        } while (choice < 0 || choice > 6);
+                        } while (choice < 0 || choice > 7);
 
                         switch (choice) {
                                 case 1:
@@ -38,9 +42,13 @@ public class Menu{
                                         enaa.Delete();
                                         break;
                                 case 5:
+                                        enaa.Search();
+                                        break;
+                                case 6:
                                         enaa.Reserve();
                                         break;
                         }
                 }while (choice != 0);
+
         }
 }
