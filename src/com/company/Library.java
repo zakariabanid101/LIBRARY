@@ -23,6 +23,7 @@ class Library {
         System.out.println("Enter book's publish date : ");
         book.publishDate = scan.nextInt();
         booksList.add(book);
+        System.out.println("The book has been added!");
     }
 
 // Display Book Function :
@@ -57,6 +58,9 @@ class Library {
                 System.out.println("Enter book's publish date : ");
                 int date = scan.nextInt();
                 booksList.get(i).ModifyBook(Name, Author, ISBN, date);
+                System.out.println("THe book has been modified successfully!");
+            }else {
+                System.out.println("The book you entered do not exist in the library!");
             }
         }
     }
@@ -68,6 +72,9 @@ class Library {
         for (int i = 0; i < booksList.size(); i++) {
             if (booksList.get(i).bookName.equals(bookDelete)) {
                 booksList.remove(i);
+                System.out.println("Book removed successfully!");
+            }else {
+                System.out.println("The book you entered do not exist!");
             }
         }
     }
@@ -123,7 +130,7 @@ class Library {
             if (booksList.get(i).bookName.equals(findBook)) {
                 System.out.println("The book " + findBook + " is in the library");
             } else {
-                System.out.println("The book you en  tered do no exist");
+                System.out.println("The book you entered do no exist");
             }
         }
     }
